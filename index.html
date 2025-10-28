@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>swap top hats — coming soon</title>
+  <meta name="description" content="Interchangeable patches for trucker, baseball, and knit caps. Clean, modern styles you can customize, collect, and trade." />
+  <meta property="og:title" content="swap top hats — coming soon" />
+  <meta property="og:description" content="Interchangeable patches for trucker, baseball, and knit caps. Clean, modern styles you can customize, collect, and trade." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-image.png" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-2: #0b0f16;
+      --card: #101522;
+      --text: #e7eaf0;
+      --muted: #a3abba;
+      --accent: #8aa4ff;
+      --ring: #272f3e;
+      --ring-2: #1b2230;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 90% -10%, #1b2132 0%, transparent 40%),
+        radial-gradient(900px 600px at -10% 0%, #182238 0%, transparent 40%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+    }
+    .frame {
+      width: min(980px, 92vw);
+      padding: 28px 20px 40px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand svg { width: 28px; height: 28px; }
+    .brand span {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: lowercase;
+      font-size: 1.05rem;
+    }
+    .badge {
+      border: 1px solid var(--ring);
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      background: rgba(0,0,0,0.2);
+    }
+    .card {
+      position: relative;
+      background: linear-gradient(180deg, #12192b 0%, var(--card) 100%);
+      border: 1px solid var(--ring);
+      border-radius: 22px;
+      padding: clamp(22px, 3vw, 34px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: -40% -20% auto auto;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(closest-side, rgba(138,164,255,0.25), rgba(138,164,255,0.04) 55%, transparent 60%);
+      transform: translate(15%, -25%);
+      pointer-events: none;
+    }
+    h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: 0.2px;
+      text-transform: lowercase;
+    }
+    p.lede {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.1vw, 1.1rem);
+      line-height: 1.5;
+      max-width: 60ch;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(18px, 3vw, 28px);
+      align-items: center;
+    }
+    .panel {
+      border: 1px solid var(--ring-2);
+      border-radius: 16px;
+      padding: 14px;
+      background: linear-gradient(180deg, #0d1220, #0b101c);
+    }
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .tile {
+      border: 1px dashed var(--ring);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      margin-top: 16px;
+      max-width: 520px;
+    }
+    input[type="email"] {
+      background: #0b0f19;
+      border: 1px solid var(--ring);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 14px 14px;
+      outline: none;
+      font-size: 1rem;
+    }
+    input[type="email"]::placeholder { color: #7f8696; }
+    button {
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #0a0b0f;
+      border: none;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+    }
+    .meta {
+      margin-top: 16px;
+      color: #7a8292;
+      font-size: 0.9rem;
+    }
+    footer {
+      margin-top: 20px;
+      color: #7a8292;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header>
+      <a class="brand" href="#">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="8" y="20" width="48" height="28" rx="6" stroke="currentColor" stroke-width="3"/>
+          <path d="M18 20c1-7 6-10 14-10s13 3 14 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path d="M12 38h40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>swap top hats</span>
+      </a>
+      <span class="badge">site launch in progress</span>
+    </header>
+
+    <section class="card">
+      <div class="hero">
+        <div>
+          <div class="badge">customizable hats · interchangeable patches</div>
+          <h1>coming soon</h1>
+          <p class="lede">
+            Trucker, baseball, and knit caps with snap-on patches: teams, initials, emojis, and icons.
+            Build your rotation, collect, and trade. Designed in the U.S.
+          </p>
+
+          <!-- Simple email capture (mailto). Replace with Formspree/Shopify later for database collection. -->
+          <form action="mailto:sales@swaptophats.com" method="post" enctype="text/plain">
+            <input type="email" name="email" placeholder="enter your email for launch updates" required />
+            <button type="submit">notify me</button>
+          </form>
+
+          <div class="meta">Questions? <a href="mailto:sales@swaptophats.com" style="color:inherit;">sales@swaptophats.com</a></div>
+        </div>
+
+        <div class="panel">
+          <img src="/assets/og-image.png" alt="swap top hats preview" style="width:100%; border-radius:12px; border:1px solid var(--ring);" />
+          <div class="panel-grid">
+            <div class="tile">clean styles</div>
+            <div class="tile">snap-on patches</div>
+            <div class="tile">sports · initials · icons</div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>© <span id="year"></span> swap top hats · all rights reserved</div>
+        <div class="meta">instagram · tiktok · x (coming soon)</div>
+      </footer>
+    </section>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
